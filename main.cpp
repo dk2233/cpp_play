@@ -3,6 +3,8 @@
 #include "loops.h"
 #include <cstdint>
 #include "var_class.h" 
+#include "types.h"
+
 
 
 int main()
@@ -12,6 +14,8 @@ int main()
     int b = 0;
 
     Status_e status_test = Status_e::STATUS_INIT;
+
+    types_test();
 
     std::cout << "var address " << &var << std::endl;
     uint32_t *var3 = &var;
