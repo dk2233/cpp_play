@@ -24,6 +24,10 @@ void containers()
 
     }
     cout << endl;
+    /*
+     * we can simply usee index like in arrayy
+     */
+    cout << numbers[0] << endl;
 
     marker_begin("CONTAINERS END");
 
