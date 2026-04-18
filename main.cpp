@@ -4,7 +4,7 @@
 #include <cstdint>
 #include "var_class.h" 
 #include "types.h"
-
+#include "data_containers.h"
 
 
 int main()
@@ -60,7 +60,10 @@ int main()
     vars.print_array();
     vars2.print_array();
     
-    printf("size of class %ld", sizeof(var_class));
+    printf("size of class %ld\n\n", sizeof(var_class));
+
+
+    containers();
 
 
 }

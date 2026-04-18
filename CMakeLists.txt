@@ -16,4 +16,5 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 add_executable(moj main.cpp
 loops.cpp
 var_class.cpp
-types.cpp)
+types.cpp
+data_containers.cpp)
