@@ -1,9 +1,11 @@
 #include <iostream>
+#include "utils.h"
 
 
 void types_test()
 {
-    std::cout << "-------------------- TYPES" << std::endl;
+    //std::cout << "-------------------- TYPES" << std::endl;
+    marker_begin("TYPES");
     auto a = 2;
     int b = 0;
     const volatile int c_c = 20;
@@ -37,6 +39,5 @@ void types_test()
 
     std::cout << "float example " << ff << " and double " << dd << std::endl;
 
-
-    std::cout << "--------------------" << std::endl;
+    marker_begin("TYPES END\n");
 }
