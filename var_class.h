@@ -1,6 +1,10 @@
+
+#ifndef VAR_CLASS_H
+#define VAR_CLASS_H
+
 #include <cstdint>
 #include <string>
-constexpr size_t arr_size = 20;
+constexpr int arr_size = 20;
 class var_class { 
     private:
     public:
@@ -19,6 +23,7 @@ class var_class {
 
         void print_array();
 };
+#endif
 
 
 
