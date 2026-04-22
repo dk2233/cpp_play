@@ -1,9 +1,11 @@
+#include <cstdio>
 #include <list>
 #include <ostream>
 #include <vector>
 #include "utils.h"
 #include "templates.h"
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -17,6 +19,8 @@ void containers()
     list<int> list_num = {};
 
     set<string> set_string = {"lion", "cat", "dog", "aligator"};
+
+    map<string,string> map_strings = {pair<string,string>("animal","cat")}; 
 
     numbers_vec.push_back(8);
     numbers_vec.push_back(90);
@@ -53,6 +57,24 @@ void containers()
 
 
     show_container<set<string>>(set_string);
+
+    map_strings.insert(pair("word","car"));
+
+    cout << "element in key " << map_strings.at("word") << endl;
+    cout << "number of specific element " << map_strings.count("animal") << endl;
+
+    map_strings["animal"] = "dog";
+
+    cout << "element in key " << map_strings.at("animal") << endl;
+
+    map_strings.at("word") = "empty";
+    cout << "element in key " << map_strings.at("word") << endl;
+
+    for(auto it = map_strings.begin(); it != map_strings.end(); it++)
+    {
+        printf(" address %p \n", (void*)&(*it));
+        cout << "for loop - element : "  << it->first << " -> " << it->second << endl;
+    }
 
     marker_begin("CONTAINERS END");
 
