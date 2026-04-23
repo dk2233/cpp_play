@@ -22,5 +22,11 @@ void test_loops() {
     } while ( i-- > 0);
     std::cout << "\n";
 
+    i = max_for;
+    while (i > 0) {
+        std::cout << i-- << ", "; 
+    }
+    std::cout << std::endl;
+
     marker_begin("LOOPS END\n");
 }
