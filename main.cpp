@@ -5,6 +5,7 @@
 #include "var_class.h" 
 #include "types.h"
 #include "data_containers.h"
+#include "errors_train.h"
 
 
 int main()
@@ -34,25 +35,11 @@ int main()
     test_loops();
 
 
-
-
-
-
-
-
-
-
-
-
-
     std::cout << "enum " << static_cast<int>(status_test) << std::endl ;
 
     status_test = Status_e::STATUS_RUN; 
 
     std::cout << "enum " << static_cast<int>(status_test) << std::endl ;
-
-
-
 
     var_class vars(10, 'a');
     var_class vars2(39, 'l');
@@ -66,4 +53,5 @@ int main()
     containers();
 
 
+    check_exception();
 }

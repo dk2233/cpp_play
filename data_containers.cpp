@@ -6,6 +6,8 @@
 #include "templates.h"
 #include <set>
 #include <map>
+#include <fstream>
+
 
 using namespace std;
 
@@ -70,11 +72,20 @@ void containers()
     map_strings.at("word") = "empty";
     cout << "element in key " << map_strings.at("word") << endl;
 
+    ofstream file1;
+
+    file1.open("data.txt");
+
     for(auto it = map_strings.begin(); it != map_strings.end(); it++)
     {
         printf(" address %p \n", (void*)&(*it));
+        file1 << "address " << &(*it) << std::endl;
         cout << "for loop - element : "  << it->first << " -> " << it->second << endl;
+        file1 << "for loop - element : "  << it->first << " -> " << it->second << endl;
+
     }
+
+    file1.close();
 
     marker_begin("CONTAINERS END");
 

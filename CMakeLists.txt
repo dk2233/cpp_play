@@ -17,4 +17,6 @@ add_executable(moj main.cpp
 loops.cpp
 var_class.cpp
 types.cpp
-data_containers.cpp)
+data_containers.cpp
+errors_train.cpp
+)
