@@ -6,7 +6,7 @@
 #include "types.h"
 #include "data_containers.h"
 #include "errors_train.h"
-
+#include "functions.h"
 
 int main()
 {
@@ -54,4 +54,6 @@ int main()
 
 
     check_exception();
+
+    circular();
 }

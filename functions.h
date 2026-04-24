@@ -43,4 +43,5 @@ typename T::value_type sum_all_elements_generic(const T &cont)
    return sum;
 }
 
+extern void circular() ;
 #endif
