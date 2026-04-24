@@ -7,6 +7,7 @@
 #include <set>
 #include <map>
 #include <fstream>
+#include "functions.h"
 
 
 using namespace std;
@@ -49,6 +50,8 @@ void containers()
 
 
     cout << numbers_vec.at(0) << endl;
+
+    sum_all_elements<int>(numbers_vec);
 
 
     show_container<set<string>>(set_string);
