@@ -51,8 +51,15 @@ void containers()
 
     cout << numbers_vec.at(0) << endl;
 
-    sum_all_elements<int>(numbers_vec);
+    int s = sum_all_elements<int>(numbers_vec);
 
+    numbers_vec.push_back(1200);
+
+    sum_all_elements(numbers_vec);
+
+    sum_all_elements_generic(list_num);
+
+    std::cout << "result = " << s << std::endl;
 
     show_container<set<string>>(set_string);
 
