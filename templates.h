@@ -59,9 +59,9 @@ public:
     void print_all() const {
         // Wykorzystaj pętlę range-based for
         // ...
-        for(auto element: data)
+        for(size_t i = 0; i < count; i++)
         {
-            std::cout << element << ", " ;
+            std::cout << data.at(i) << ", " ;
         }
         std::cout << std::endl;
     }
