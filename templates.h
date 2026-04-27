@@ -81,4 +81,10 @@ int main() {
     return 0;
 }
 **/
+template <typename T>
+void print_size_template(const T& data)
+{
+
+    std::cout <<  "size of " << typeid(data).name() << " " << sizeof(data) << std::endl;
+};
 #endif
