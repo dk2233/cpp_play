@@ -56,4 +56,6 @@ int main()
     check_exception();
 
     circular();
+
+    functions_main();
 }

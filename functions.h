@@ -44,4 +44,12 @@ typename T::value_type sum_all_elements_generic(const T &cont)
 }
 
 extern void circular() ;
+
+int sum_args(int a, int b);
+
+char sum_args(char a, char b);
+
+float sum_args(float a, float b);
+
+void functions_main();
 #endif

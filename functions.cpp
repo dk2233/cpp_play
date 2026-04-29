@@ -1,3 +1,4 @@
+#include "functions.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -37,4 +38,30 @@ void circular() {
 }
 
 
+int sum_args(int a, int b)
+{
+    return a + b;
+}
 
+char sum_args(char a, char b)
+{
+    return a + b;
+}
+
+
+float sum_args(float a, float b)
+{
+    return a + b;
+}
+
+void functions_main()
+{
+    marker_begin("FUNCTIONS");
+    std::cout <<  " sum of int " <<  sum_args(2,40) << std::endl;
+    std::cout <<  " sum of float " <<  sum_args(2.5f, 5.78f) << std::endl;
+    char x1 = 4, x2 = 6;
+
+    std::cout <<  " sum of char " <<  (int)sum_args(x1, x2) << std::endl;
+
+    marker_begin("FUNCTIONS END");
+}
