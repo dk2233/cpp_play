@@ -5,6 +5,8 @@
 #include "templates.h"
 #include "utils.h"
 
+int sum_between(int m, int n);
+int sum_between_rec(int m, int n);
 
 void circular() {
 
@@ -54,6 +56,33 @@ float sum_args(float a, float b)
     return a + b;
 }
 
+int sum_between(int m, int n)
+{
+    int t ;
+    if (m > n) 
+    {
+        t = n;
+        n = m;
+        m = t;
+
+    }
+    t = 0;
+    for(; m <= n; m++)
+    {
+        t += m; 
+    }
+    return t;
+}
+
+ int sum_between_rec(int m, int n)
+{
+
+    if (m == n) {
+        return m;
+    }
+    return m + sum_between_rec(m+1, n) ;
+}
+
 void functions_main()
 {
     marker_begin("FUNCTIONS");
@@ -61,7 +90,10 @@ void functions_main()
     std::cout <<  " sum of float " <<  sum_args(2.5f, 5.78f) << std::endl;
     char x1 = 4, x2 = 6;
 
-    std::cout <<  " sum of char " <<  (int)sum_args(x1, x2) << std::endl;
+    std::cout <<  " sum of char " <<  static_cast<int>(sum_args(x1, x2)) << std::endl;
+    int a1 = 2, a2 = 8;
+    std::cout << " sum between " << a1 << " and " << a2 << " = " << sum_between(2, 8) << std::endl;
 
+    std::cout << " sum between " << a1 << " and " << a2 << " = " << sum_between_rec(2, 8) << std::endl;
     marker_begin("FUNCTIONS END");
 }
