@@ -20,6 +20,10 @@ class var_class {
 
         var_class(int a, char c);
 
+        var_class();
+
+        ~var_class();
+
 
         void print_array();
 };

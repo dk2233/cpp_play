@@ -43,9 +43,13 @@ int main()
 
     var_class vars(10, 'a');
     var_class vars2(39, 'l');
+    var_class vars3;
+    var_class vars4(vars);
     
     vars.print_array();
     vars2.print_array();
+    vars3.print_array();
+    vars4.print_array();
     
     printf("size of class %ld\n\n", sizeof(var_class));
 
