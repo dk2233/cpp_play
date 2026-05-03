@@ -26,21 +26,11 @@ end
 
 
 start
-# Ustawiamy breakpoint na funkcji (zmień 'moja_funkcja' na docelową)
-break 47
-
-commands $bpnum
-    printf "call new class\n"
-    diag1
-    p/x vars
-    set $adr_base = &vars
-    p/x &vars
-end
 
 
 break var_class::var_class(var_class const&)
 commands $bpnum
-    printf "start of copy construct\n"
+    printf "\nstart of copy construct\n"
     diag1
     i function var_class
     diag_copy
@@ -48,28 +38,28 @@ commands $bpnum
 
 end
 
+b var_class_heap
+
+commands $bpnum
+    printf "\ncall of var_class_heap\n"
+    
+    diag1
+end
+
+
 
 i b 
 i proc mappings
 c
 c
+c
+n
+p/x vars_heap_copy
+p *vars_heap_copy
+p vars
 
-    diag1
 
-    p/x $x8
-    p/x $x9
-    printf "adres of base class that is copied %p \n", $adr_base
-#set $i=0
-#while $i++<10
-#diag1
-#si 
-#end
-# Definiujemy listę komend dla powyższego breakpointu (zawsze dla ostatniego numeru)
-#commands 1 
-#silent 
-#diag1
-#end
+#printf "adres of base class that is copied %p \n", $adr_base
 
-# Uruchomienie programu
 
 

@@ -4,9 +4,12 @@
 
 #include <cstdint>
 #include <string>
+#include <list>
 constexpr int arr_size = 20;
 class var_class { 
     private:
+        std::list<std::string> *list_words = new std::list<std::string>(); 
+        
     public:
         int  data_int {0};
         int data2 {3};
@@ -31,6 +34,8 @@ class var_class {
 
         void print_array();
 };
+
+void var_class_test(); 
 #endif
 
 
