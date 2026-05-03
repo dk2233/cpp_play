@@ -29,3 +29,11 @@ void var_class::print_array() {
 var_class::~var_class() {
     std::cout << "class destruct called"<< std::endl;
 }
+/*
+var_class::var_class(const var_class& base) {
+
+    std::cout << "copy class called , address:" << &base <<  std::endl;
+
+    data_int = base.data_int;
+
+}*/

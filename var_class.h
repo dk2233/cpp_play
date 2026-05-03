@@ -25,6 +25,10 @@ class var_class {
         ~var_class();
 
 
+        //var_class(const var_class& base);
+
+
+
         void print_array();
 };
 #endif
