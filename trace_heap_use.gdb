@@ -54,6 +54,7 @@ c
 c
 c
 n
+printf "compare address of list_words\n" 
 p/x vars_heap_copy
 p *vars_heap_copy
 p vars

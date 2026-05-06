@@ -16,10 +16,9 @@ end
 break ~var_class
 
 # Definiujemy listę komend dla powyższego breakpointu (zawsze dla ostatniego numeru)
-commands 1 
+commands $bpnum 
 silent 
 diag1
-
 end
 
 # Uruchomienie programu

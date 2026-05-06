@@ -1,6 +1,7 @@
 # Nie wyświetlamy potwierdzeń przy przeładowaniu
 set confirm off
-set trace-command on
+#do we need to see every commands?
+set trace-command off
 echo on
 #set disassembly-flavor intel  # Opcjonalnie: format Intela jest czytelniejszy
 define diag1
@@ -9,6 +10,7 @@ define diag1
     i args
     info line
      frame
+     where 2
     disassemble $pc, +20 
     printf "Adres w rejestrze PC: %p\n", $pc
     printf "---------------------------\n"
@@ -26,8 +28,7 @@ end
 
 
 start
-# Ustawiamy breakpoint na funkcji (zmień 'moja_funkcja' na docelową)
-break 47
+break var_class_test
 
 commands $bpnum
     printf "call new class\n"

@@ -20,11 +20,11 @@ break sum_between_rec
 commands 1 2
 silent 
 diag1
-
 end
 
 # Uruchomienie programu
 run
+i b
 c
 c
 c
