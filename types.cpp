@@ -10,11 +10,11 @@ void types_test()
     //std::cout << "-------------------- TYPES" << std::endl;
     marker_begin("TYPES");
     auto a = 2;
-    int b = 0;
-    const volatile int c_c = 20;
+    int b  (0);
+    const volatile int c_c  {20};
     constexpr int c_const = 0xaa;
 
-    char c = 0x64;
+    char c  {0x64};
 
     std::cout << "znak " << int(c) << " -> " << c << std::endl;
     std::cout << "znak +1 " << int(c+1) << " -> " << c+1 << std::endl;

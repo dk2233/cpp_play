@@ -28,7 +28,7 @@ void var_class::print_array() {
 }
 
 var_class::~var_class() {
-    std::cout << "class destruct called"<< std::endl;
+    std::cout << "class destruct called for class " << typeid(*this).name()<< std::endl;
 }
 /*
 var_class::var_class(const var_class& base) {
