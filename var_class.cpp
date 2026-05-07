@@ -2,6 +2,8 @@
 #include <iostream>
 
 void var_class_heap(var_class &vars) ;
+void var_class_mv_test(var_class &vars);
+
 
 var_class::var_class(int a, char c) : data_int{a} {
     for(int i=0 ; i < arr_size;  i++){
@@ -30,14 +32,27 @@ void var_class::print_array() {
 var_class::~var_class() {
     std::cout << "class destruct called for class " << typeid(*this).name()<< std::endl;
 }
-/*
-var_class::var_class(const var_class& base) {
+
+var_class_mv::var_class_mv(const var_class_mv& base) {
 
     std::cout << "copy class called , address:" << &base <<  std::endl;
 
     data_int = base.data_int;
 
-}*/
+}
+
+var_class_mv::var_class_mv(const var_class& base):var_class(base) {
+    std::cout << "copy class called from base  , address:" << &base <<  std::endl;
+
+    list_words = new std::list<std::string>;
+
+
+}
+
+var_class_mv::var_class_mv(int a, char c ) : var_class(a, c)
+{
+
+}
 void var_class_heap(var_class &vars) {
     //run script trace_heap_use
     var_class *vars_heap1 = new var_class();
@@ -46,6 +61,14 @@ void var_class_heap(var_class &vars) {
 
     delete vars_heap1;
     delete vars_heap_copy;
+}
+
+void var_class_mv_test(var_class &vars)
+{
+    var_class_mv vars_mv(vars);
+
+
+
 }
 
 void var_class_test() 
@@ -64,4 +87,8 @@ void var_class_test()
     var_class_heap(vars);
     
     printf("size of class %ld\n\n", sizeof(var_class));
+
+    var_class_mv_test(vars);
+
+
 }

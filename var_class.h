@@ -7,11 +7,11 @@
 #include <list>
 constexpr int arr_size = 20;
 class var_class { 
-    private:
+    protected:
         std::list<std::string> *list_words = new std::list<std::string>(); 
         
     public:
-        int  data_int {0};
+        int data_int {0};
         int data2 {3};
         unsigned int data_uint {2};
         float data_f;
@@ -27,12 +27,21 @@ class var_class {
 
         ~var_class();
 
-
-        //var_class(const var_class& base);
-
-
-
         void print_array();
+};
+
+
+class var_class_mv:public var_class {
+
+
+    public:
+        var_class_mv(int a, char c ) ;
+
+        var_class_mv(int);
+
+        var_class_mv(const var_class_mv& base);
+
+        var_class_mv(const var_class& base);
 };
 
 void var_class_test(); 

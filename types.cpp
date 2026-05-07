@@ -16,6 +16,7 @@ void types_test()
 
     char c  {0x64};
 
+
     std::cout << "znak " << int(c) << " -> " << c << std::endl;
     std::cout << "znak +1 " << int(c+1) << " -> " << c+1 << std::endl;
 
@@ -55,6 +56,9 @@ void types_test()
     print_size_template(c);
     print_size_template(enumStatus);
     print_size_template(class_test);
+    
+    int *ptr = &b;
+    std::cout << "ptr of type " << typeid(ptr).name() << " address " << ptr << ", " << &b << std::endl;  
 
 
     marker_begin("TYPES END\n");
