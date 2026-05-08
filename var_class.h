@@ -28,6 +28,8 @@ class var_class {
         ~var_class();
 
         void print_array();
+        std::list<std::string> *  get_list() const;
+        void add_word(const std::string& word);
 };
 
 
@@ -42,6 +44,9 @@ class var_class_mv:public var_class {
         var_class_mv(const var_class_mv& base);
 
         var_class_mv(const var_class& base);
+
+        var_class_mv(var_class_mv&& base) noexcept;
+
 };
 
 void var_class_test(); 

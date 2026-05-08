@@ -9,7 +9,7 @@ define diag1
     i args
     info line
      frame
-     where 2
+     where 3
     disassemble $pc, +20 
     printf "Adres w rejestrze PC: %p\n", $pc
     printf "---------------------------\n"
@@ -21,41 +21,72 @@ define diag_copy
     printf "Adres nowego obiektu (this): %p\n", this
     #printf "Adres źródła (other):        %p\n", &$arg0
     # Wyświetl backtrace, aby wiedzieć, kto wymusił kopię
-    where 2
+    where 3
 end
 
 
 
-start
-break var_class_mv_test
 
-commands $bpnum
+break var_class_mv_test
+set $bp1 = $bpnum
+
+break var_class_mv::var_class_mv(var_class& const)
+set $bp2=$bpnum
+
+break var_class_mv::var_class_mv(var_class_mv&&) 
+set $bp3 = $bpnum
+
+b show_container
+
+
+
+
+
+
+
+
+
+commands $bp2
+    printf "call copy construct in var_class_mv \n"
+    diag1
+    p/x vars
+    p vars.list_words
+    set $adr_base = &vars
+    p/x &vars
+    p/x base
+end
+
+commands $bp3
+    printf "call move construct in var_class_mv \n"
+    diag1
+    p/x base
+    p base.list_words
+    #set $adr_base = &base
+    
+    
+end
+
+
+commands $bp1
     printf "call test function \n"
     diag1
 end
 
-break var_class_mv::var_class_mv(const var_class& base)
-commands $bpnum
-    printf "call copy construct in var_class_mv \n"
-    diag1
-    p/x vars
-    set $adr_base = &vars
-    p/x &vars
-end
-
-
-
-
-i b 
+i b
+run
 c
-n
+c
+c
+c
 
 
-    diag1
+# diag1
 
-    p/x vars
-    p/x vars_mv
-    printf "adres of base class that is copied %p \n", $adr_base
+#    p/x vars
+#    p/x vars_mv
+#    printf "adres of base class that is copied %p \n", $adr_base
+#c
+
 #set $i=0
 #while $i++<10
 #diag1
