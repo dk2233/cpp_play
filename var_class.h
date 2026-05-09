@@ -46,6 +46,8 @@ class var_class_mv:public var_class {
         var_class_mv(const var_class& base);
 
         var_class_mv(var_class_mv&& base) noexcept;
+        // Musisz to dodać pod konstruktorem przenoszącym
+        var_class_mv& operator=(var_class_mv&& other) noexcept;
 
 };
 

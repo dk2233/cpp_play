@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+#include <utility>
 
 void var_class_heap(var_class &vars) ;
 void var_class_mv_test(var_class &vars);
@@ -79,6 +80,23 @@ var_class(std::move(base))
 
 }
 
+var_class_mv& var_class_mv::operator=(var_class_mv&& other) noexcept {
+    // 1. Sprawdź, czy nie przypisujesz obiektu do samego siebie (np. a = std::move(a))
+    if (this != &other) {
+        // 2. Najpierw wyczyść własne śmieci (zwolnij starą listę)
+        delete this->list_words;
+
+        // 3. Ukradnij zasoby od 'other'
+        this->list_words = other.list_words;
+
+        // 4. Ustaw 'other' na nullptr, żeby destruktor go nie usunął
+        other.list_words = nullptr;
+        
+        std::cout << "Move Assignment Operator called!" << std::endl;
+    }
+    return *this;
+}
+
 void var_class_heap(var_class &vars) {
     //run script trace_heap_use
     var_class *vars_heap1 = new var_class();
@@ -100,7 +118,33 @@ void var_class_mv_test(var_class &vars)
 
     show_container(*(vars_mv2.get_list()));
 
-    show_container(*(vars_mv.get_list()));
+    std::cout << "before use again vars_mv that was moved to vars_mv2 , we need to return ownership otherwise we will crash reading from null" << std::endl; 
+    if (vars_mv.get_list() != nullptr)
+    {
+
+        show_container(*(vars_mv.get_list()));
+    }
+    else 
+    {
+        std::cout << "address is null , it was moved to other instance" << std::endl;
+
+
+    }
+    vars_mv2.add_word("new word");
+
+    
+    vars_mv = std::move(vars_mv2);
+    if (vars_mv.get_list() != nullptr)
+    {
+
+        show_container(*(vars_mv.get_list()));
+    }
+    else 
+    {
+        std::cout << "address is null , it was moved to other instance" << std::endl;
+
+
+    }
 
 }
 
