@@ -5,6 +5,9 @@
 #include <cstdint>
 #include <string>
 #include <list>
+
+class var_class;
+
 constexpr int arr_size = 20;
 class var_class { 
     protected:
@@ -49,6 +52,13 @@ class var_class_mv:public var_class {
         // Musisz to dodać pod konstruktorem przenoszącym
         var_class_mv& operator=(var_class_mv&& other) noexcept;
 
+};
+
+
+class var_move_def: public var_class
+{
+    public:
+        var_move_def(const var_class& base);
 };
 
 void var_class_test(); 

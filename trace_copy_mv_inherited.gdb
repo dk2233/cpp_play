@@ -39,7 +39,8 @@ set $bp3 = $bpnum
 b show_container
 
 
-
+b var_move_def::var_move_def(const var_class&)
+set $bp4=$bpnum
 
 
 
@@ -72,13 +73,19 @@ commands $bp1
     diag1
 end
 
+commands $bp4
+
+    printf "call construct for class var_move_def"
+    diag1
+end
 i b
 run
 c
 c
 c
 c
-
+c
+c
 
 # diag1
 

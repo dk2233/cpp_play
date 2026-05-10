@@ -59,6 +59,9 @@ var_class_mv::var_class_mv(const var_class& base):var_class(base) {
 
     show_container(*(get_list()));
 }
+var_move_def::var_move_def(const var_class& base):var_class(base) {
+    list_words = new std::list<std::string>(*(base.get_list()));
+}
 
 var_class_mv::var_class_mv(int a, char c ) : var_class(a, c)
 {
@@ -145,6 +148,15 @@ void var_class_mv_test(var_class &vars)
 
 
     }
+
+
+    var_move_def var_mv3 = var_class(vars);
+
+    std::cout << "now call default move" <<  std::endl;
+    var_move_def vars_mv4 = std::move(var_mv3);
+
+    show_container(*(vars_mv4.get_list()));
+    show_container(*(var_mv3.get_list()));
 
 }
 

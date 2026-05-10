@@ -7,6 +7,7 @@
 #include "data_containers.h"
 #include "errors_train.h"
 #include "functions.h"
+#include "strings_test.h"
 
 int main()
 {
@@ -51,5 +52,7 @@ int main()
     circular();
 
     functions_main();
+
+    strings_tests();
 
 }
