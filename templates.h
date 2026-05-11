@@ -15,9 +15,9 @@ void show_container(const C& container)
 {
     for(auto&  n: container)
     {
-        cout << n << ", ";
+        std::cout << n << ", ";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
 template <typename T, size_t N>
