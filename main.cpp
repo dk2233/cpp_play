@@ -55,4 +55,6 @@ int main()
 
     strings_tests();
 
+    arrays_tests();
+
 }

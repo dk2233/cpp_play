@@ -21,4 +21,5 @@ data_containers.cpp
 errors_train.cpp
 functions.cpp
 strings_test.cpp
+arrays_tests.cpp
 )
