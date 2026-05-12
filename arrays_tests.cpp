@@ -5,13 +5,29 @@
 #include <iostream>
 #include <vector>
 #include <span>
+/* 
+ * function overloading
+ */
+void set_array(int a[], size_t s);
+void set_array(std::span<int> a_span);
+
 
 void set_array(int a[], size_t s)
 {
     a[0] = 100;
-    for(int i = 0; i < s; i++)
+    for(size_t i = 0; i < s; i++)
     {
         std::cout << a[i] << ", " ;
+    }
+    std::cout << std::endl;
+}
+
+void set_array(std::span<int> a_span)
+{
+    a_span[0] = -100;
+    for(int i: a_span)
+    {
+        std::cout << i << ", " ;
     }
     std::cout << std::endl;
 }
@@ -74,5 +90,11 @@ void arrays_tests()
     show_container(span_int1);
     
     set_array(array_int, 10 );
+
+    show_container(array_int);
+
+    std::span<int> span_int2 = array_int;
+
+    set_array(span_int2);
 
 }
