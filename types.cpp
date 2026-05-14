@@ -58,7 +58,7 @@ void types_test()
     print_size_template(class_test);
     
     int *ptr = &b;
-    std::cout << "ptr of type " << typeid(ptr).name() << " address " << ptr << ", " << &b << std::endl;  
+    std::cout << "ptr of type " << typeid(ptr).name() << " address " << ptr << ", " << &b << ",size of ptr " << sizeof(ptr) << std::endl;  
 
 
     marker_begin("TYPES END\n");

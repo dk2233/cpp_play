@@ -7,6 +7,8 @@
 
 int sum_between(int m, int n);
 int sum_between_rec(int m, int n);
+void test_of_references(std::string &str);
+void func_normal_arg(std::string str);
 
 void circular() {
 
@@ -83,6 +85,24 @@ int sum_between(int m, int n)
     return m + sum_between_rec(m+1, n) ;
 }
 
+void test_of_references(std::string &str)
+{
+
+    std::cout << "string" << std::endl ;
+    std::cout << str << std::endl;
+
+
+}
+
+void func_normal_arg(std::string str)
+{
+
+    std::cout << "string" << std::endl ;
+    std::cout << str << std::endl;
+
+}
+
+
 void functions_main()
 {
     marker_begin("FUNCTIONS");
@@ -95,5 +115,10 @@ void functions_main()
     std::cout << " sum between " << a1 << " and " << a2 << " = " << sum_between(2, 8) << std::endl;
 
     std::cout << " sum between " << a1 << " and " << a2 << " = " << sum_between_rec(2, 8) << std::endl;
+   
+    
+    std::string str1 {"teext"};
+    test_of_references(str1);
+    func_normal_arg(str1);
     marker_begin("FUNCTIONS END");
 }
