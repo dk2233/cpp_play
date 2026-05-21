@@ -22,4 +22,10 @@ errors_train.cpp
 functions.cpp
 strings_test.cpp
 arrays_tests.cpp
+BankAccount.cpp
+Account_Util.cpp 
+SavingsAccount.cpp
+TrustAccount.cpp
+CheckAccount.cpp
+polymorph.cpp
 )

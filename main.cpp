@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Account_Util.h"
 #include "enum_train.h"
 #include "loops.h"
 #include <cstdint>
@@ -8,12 +9,11 @@
 #include "errors_train.h"
 #include "functions.h"
 #include "strings_test.h"
+#include "polymorph.h"
 
 int main()
 {
     uint32_t var = 100;
-    auto var2 = 1.2f;
-    int b = 0;
 
     Status_e status_test = Status_e::STATUS_INIT;
 
@@ -57,4 +57,5 @@ int main()
 
     arrays_tests();
 
+    account_train();
 }
