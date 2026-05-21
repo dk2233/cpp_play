@@ -22,4 +22,8 @@ errors_train.cpp
 functions.cpp
 strings_test.cpp
 arrays_tests.cpp
+BankAccount.cpp
+Account_Util.cpp 
+polymorph.cpp
+IPrintable.cpp
 )
