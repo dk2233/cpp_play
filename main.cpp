@@ -58,4 +58,6 @@ int main()
     arrays_tests();
 
     account_train();
+
+    shapes_test();
 }

@@ -4,4 +4,5 @@
 
 void account_train(void);
 
+void shapes_test();
 #endif
