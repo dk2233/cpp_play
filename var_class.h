@@ -9,13 +9,17 @@
 class var_class;
 
 constexpr int arr_size = 20;
+
 class var_class { 
+    private:
+        int data2 {3};
+
     protected:
         std::list<std::string> *list_words = new std::list<std::string>(); 
         
-    public:
         int data_int {0};
-        int data2 {3};
+
+    public:
         unsigned int data_uint {2};
         float data_f;
         double data_double;

@@ -1,6 +1,6 @@
 #include "var_class.h"
 #include "templates.h"
-#include <algorithm>
+#include "utils.h"
 #include <iostream>
 #include <string>
 #include <utility>
@@ -17,6 +17,7 @@ var_class::var_class(int a, char c) : data_int{a} {
         data_array[i] = c;
     }
     std::cout << " created class var_class with int " << a << std::endl;
+    data2 = 2;
     
 }
 
@@ -162,6 +163,7 @@ void var_class_mv_test(var_class &vars)
 
 void var_class_test() 
 {
+    marker_begin("VAR_CLASS START");
     var_class vars(10, 'a');
     var_class vars2(39, 'l');
     var_class vars3;
@@ -181,6 +183,7 @@ void var_class_test()
     printf("size of class %ld\n\n", sizeof(var_class));
 
     var_class_mv_test(vars);
+    marker_begin("VAR_CLASS END");
 
 
 }

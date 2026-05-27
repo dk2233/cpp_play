@@ -27,4 +27,5 @@ Account_Util.cpp
 polymorph.cpp
 IPrintable.cpp
 Shapes.cpp
+smart_ptr.cpp
 )

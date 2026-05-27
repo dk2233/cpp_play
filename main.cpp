@@ -10,6 +10,7 @@
 #include "functions.h"
 #include "strings_test.h"
 #include "polymorph.h"
+#include "smart_ptr.h" 
 
 int main()
 {
@@ -60,4 +61,6 @@ int main()
     account_train();
 
     shapes_test();
+
+    smart_ptr();
 }
