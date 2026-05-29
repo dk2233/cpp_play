@@ -1,5 +1,5 @@
+#include <ios>
 #include <iostream>
-#include <iterator>
 #include "utils.h"
 #include "templates.h"
 #include "enum_train.h"
@@ -17,7 +17,9 @@ void types_test()
     char c  {0x64};
 
 
-    std::cout << "znak " << int(c) << " -> " << c << std::endl;
+    std::cout << std::showbase;
+    std::cout << std::hex << "hex znak " << int(c) << " -> " << c << std::endl;
+    std::cout << std::dec << "dec znak " << int(c) << " -> " << c << std::endl;
     std::cout << "znak +1 " << int(c+1) << " -> " << c+1 << std::endl;
 
     std::cout << "constexpr " << c_const << std::endl;
@@ -30,6 +32,7 @@ void types_test()
 
     bool cond = a < c;
 
+    std::cout << std::boolalpha;
     std::cout << "condition a (" << a << ")< c (" << int(c) << ") -> this condition has value = " << cond << std::endl;
     cond = b < c;
     std::cout << "condition b (" << b << ")< c (" << int(c) << ") -> this condition has value = " << cond << std::endl;
