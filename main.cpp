@@ -65,4 +65,6 @@ int main()
     smart_ptr();
 
     io_sandbox();
+
+    enum_sandbox();
 }

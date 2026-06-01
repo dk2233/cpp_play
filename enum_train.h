@@ -10,4 +10,12 @@ enum class Status_e : uint8_t {
     STATUS_RUN = 4,
     STATUS_ERROR = 9,
 };
+
+enum Status_unscoped {
+    STAT_IDLE, STAT_INIT, STAT_RESTART, STAT_RUN, STAT_ERROR };
+
+
+
+void enum_sandbox();
+
 #endif
