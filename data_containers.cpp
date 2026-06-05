@@ -13,9 +13,54 @@
 using namespace std;
 
 
+std::ostream &operator<<(std::ostream &os, const std::set<int> &s) 
+{
+    std::set<int>::const_iterator it {s.begin()};
+    os << " [ " ;
+    while(it != s.end())
+    {
+        os << *it << " , ";
+        it++;
+    }
+    os << " ] ";
+    return os;
+}
+
+void maps()
+{
+    std::map<std::string, int> map_s_i {};
+    std::map<std::string, std::set<int>> map_s_sets {};
+
+    map_s_i.emplace("Maja", 0);
+    map_s_i["Gabrys"]++;
+    map_s_i["Kinga"];
+
+    show_container<std::string, int>(map_s_i);
+
+    map_s_sets["Maja"] = {9};
+    map_s_sets.emplace("Gabrys", std::set<int>{0, 3, 5, 78});
+    map_s_sets.insert( std::pair<std::string, std::set<int>>{"Kinga", std::set<int>{90, -89, 56,23,56,7}});
+
+    map_s_sets["Maja"].emplace(78);
+
+    show_container<std::string, std::set<int>>(map_s_sets);
+    
+    std::cout << map_s_sets["Maja"] << std::endl;
+
+
+  /*  for(auto &n: map_s_i)
+    {
+        std::cout << n.first << " , " << n.second << std::endl;
+    }
+    */
+}
+
+
 void containers()
 {
     marker_begin("CONTAINERS");
+
+    maps();
 
     vector<int> numbers_vec = {};
 
@@ -31,6 +76,17 @@ void containers()
     numbers_vec.push_back(-78);
 
     show_container<vector<int>>(numbers_vec);
+
+    std::cout << "using iterators " << std::endl;
+
+    auto it = numbers_vec.begin();
+
+    while(it != numbers_vec.end())
+    {
+        std::cout << *it << " ,, ";
+        it++;
+    }
+    std::cout << std::endl;
 
     list_num.push_front(8);
 
@@ -63,6 +119,14 @@ void containers()
 
     show_container<set<string>>(set_string);
 
+    std::set<std::string>::iterator its {set_string.begin()};
+
+    while(its != set_string.end())
+    {
+        std::cout << "loop with iterator "<< std::setw(20) << *(its++) << std::endl;
+    }
+
+
     cout << "size of set " << set_string.size() << endl;
     cout << "remove of one element " << *(next(set_string.begin())) <<  endl;
     set_string.erase(next(set_string.begin(),1));
@@ -82,20 +146,26 @@ void containers()
     map_strings.at("word") = "empty";
     cout << "element in key " << map_strings.at("word") << endl;
 
-    ofstream file1;
+    ofstream file1 {"../data.txt", std::ios::app};
 
-    file1.open("data.txt");
-
-    for(auto it = map_strings.begin(); it != map_strings.end(); it++)
+    if (file1.is_open())
     {
-        printf(" address %p \n", (void*)&(*it));
-        file1 << "address " << &(*it) << std::endl;
-        cout << "for loop - element : "  << it->first << " -> " << it->second << endl;
-        file1 << "for loop - element : "  << it->first << " -> " << it->second << endl;
 
+        for(auto it = map_strings.begin(); it != map_strings.end(); it++)
+        {
+            printf(" address %p \n", (void*)&(*it));
+            file1 << "address " << &(*it) << std::endl;
+            cout << "for loop - element : "  << it->first << " -> " << it->second << endl;
+            file1 << "for loop - element : "  << it->first << " -> " << it->second << endl;
+
+        }
+
+        file1.close();
     }
-
-    file1.close();
+    else {
+    
+        std::cerr << " Problem opening a file " << std::endl;
+    }
 
     marker_begin("CONTAINERS END");
 

@@ -4,8 +4,12 @@
 #include "iostream"
 #include <array>
 #include <type_traits>
+#include <map>
+#include <set>
 
 using namespace std;
+
+std::ostream &operator<<(std::ostream &os, const std::set<int> &s);
 
 template <typename  C>
 void show_container(const C& container);
@@ -19,6 +23,16 @@ void show_container(const C& container)
     }
     std::cout << std::endl;
 }
+
+template <typename T1, typename T2>
+void show_container(const std::map<T1, T2> &m)
+{
+    for(auto &el: m)
+    {
+        std::cout << el.first << " , " << el.second << std::endl;
+    }
+}
+
 
 template <typename T, size_t N>
 class CircularBuffer {
