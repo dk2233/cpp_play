@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdio>
 #include <list>
 #include <ostream>
@@ -26,10 +27,58 @@ std::ostream &operator<<(std::ostream &os, const std::set<int> &s)
     return os;
 }
 
+void vectors()
+{
+    vector<int> numbers_vec = {};
+
+    numbers_vec.push_back(8);
+    numbers_vec.push_back(90);
+
+    numbers_vec.push_back(-78);
+
+    show_container<vector<int>>(numbers_vec);
+    
+    auto it = numbers_vec.begin();
+
+    while(it != numbers_vec.end())
+    {
+        std::cout << *it << " ,, ";
+        it++;
+    }
+
+    /*
+     * we can simply use index like in array
+     */
+    cout << numbers_vec[0] << endl;
+
+
+    cout << numbers_vec.at(0) << endl;
+
+    int s = sum_all_elements<int>(numbers_vec);
+
+    numbers_vec.push_back(1200);
+
+    sum_all_elements(numbers_vec);
+
+    std::cout << "result = " << s << std::endl;
+    
+
+    std::transform(numbers_vec.begin(), numbers_vec.end(), numbers_vec.begin(),[](int x ) { 
+
+        return x/2;
+
+            });
+
+    show_container(numbers_vec);
+
+}
+
+
 void maps()
 {
     std::map<std::string, int> map_s_i {};
     std::map<std::string, std::set<int>> map_s_sets {};
+    std::map<string,string> map_strings = {pair<string,string>("animal","cat")}; 
 
     map_s_i.emplace("Maja", 0);
     map_s_i["Gabrys"]++;
@@ -53,87 +102,6 @@ void maps()
         std::cout << n.first << " , " << n.second << std::endl;
     }
     */
-}
-
-
-void containers()
-{
-    marker_begin("CONTAINERS");
-
-    maps();
-
-    vector<int> numbers_vec = {};
-
-    list<int> list_num = {};
-
-    set<string> set_string = {"lion", "cat", "dog", "aligator"};
-
-    map<string,string> map_strings = {pair<string,string>("animal","cat")}; 
-
-    numbers_vec.push_back(8);
-    numbers_vec.push_back(90);
-
-    numbers_vec.push_back(-78);
-
-    show_container<vector<int>>(numbers_vec);
-
-    std::cout << "using iterators " << std::endl;
-
-    auto it = numbers_vec.begin();
-
-    while(it != numbers_vec.end())
-    {
-        std::cout << *it << " ,, ";
-        it++;
-    }
-    std::cout << std::endl;
-
-    list_num.push_front(8);
-
-    list_num.push_back(90);
-
-    list_num.push_front(-10);
-    list_num.push_back(900);
-    list_num.push_back(0);
-
-    show_container<list<int>>(list_num);
-
-
-    /*
-     * we can simply use index like in array
-     */
-    cout << numbers_vec[0] << endl;
-
-
-    cout << numbers_vec.at(0) << endl;
-
-    int s = sum_all_elements<int>(numbers_vec);
-
-    numbers_vec.push_back(1200);
-
-    sum_all_elements(numbers_vec);
-
-    sum_all_elements_generic(list_num);
-
-    std::cout << "result = " << s << std::endl;
-
-    show_container<set<string>>(set_string);
-
-    std::set<std::string>::iterator its {set_string.begin()};
-
-    while(its != set_string.end())
-    {
-        std::cout << "loop with iterator "<< std::setw(20) << *(its++) << std::endl;
-    }
-
-
-    cout << "size of set " << set_string.size() << endl;
-    cout << "remove of one element " << *(next(set_string.begin())) <<  endl;
-    set_string.erase(next(set_string.begin(),1));
-
-
-    show_container<set<string>>(set_string);
-
     map_strings.insert(pair("word","car"));
 
     cout << "element in key " << map_strings.at("word") << endl;
@@ -142,7 +110,6 @@ void containers()
     map_strings["animal"] = "dog";
 
     cout << "element in key " << map_strings.at("animal") << endl;
-
     map_strings.at("word") = "empty";
     cout << "element in key " << map_strings.at("word") << endl;
 
@@ -166,6 +133,63 @@ void containers()
     
         std::cerr << " Problem opening a file " << std::endl;
     }
+
+}
+
+void lists()
+{
+    list<int> list_num = {};
+
+    list_num.push_front(8);
+
+    list_num.push_back(90);
+
+    list_num.push_front(-10);
+    list_num.push_back(900);
+    list_num.push_back(0);
+
+    show_container<list<int>>(list_num);
+
+    sum_all_elements_generic(list_num);
+}
+
+void containers()
+{
+    marker_begin("CONTAINERS");
+
+    maps();
+
+    vectors();
+
+    lists();
+
+
+    set<string> set_string = {"lion", "cat", "dog", "aligator"};
+
+
+
+    std::cout << "using iterators " << std::endl;
+
+    std::cout << std::endl;
+
+
+    show_container<set<string>>(set_string);
+
+    std::set<std::string>::iterator its {set_string.begin()};
+
+    while(its != set_string.end())
+    {
+        std::cout << "loop with iterator "<< std::setw(20) << *(its++) << std::endl;
+    }
+
+
+    cout << "size of set " << set_string.size() << endl;
+    cout << "remove of one element " << *(next(set_string.begin())) <<  endl;
+    set_string.erase(next(set_string.begin(),1));
+
+
+    show_container<set<string>>(set_string);
+
 
     marker_begin("CONTAINERS END");
 
