@@ -4,7 +4,7 @@
 #include <ostream>
 class IPrintable 
 {
-    friend std::ostream &operator<<(std::ostream &os, IPrintable &p) ;
+    friend std::ostream &operator<<(std::ostream &os, const IPrintable &p) ;
     public: 
         virtual void print(std::ostream &os)  const = 0;
 

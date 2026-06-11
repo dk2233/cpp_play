@@ -1,6 +1,6 @@
 #include "IPrintable.h"
 
-std::ostream &operator<<(std::ostream &os, IPrintable &p) 
+std::ostream &operator<<(std::ostream &os, const IPrintable &p) 
 {
     p.print(os);
 

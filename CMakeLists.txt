@@ -30,4 +30,5 @@ Shapes.cpp
 smart_ptr.cpp
 io_sand.cpp
 enum_train.cpp
+lambda_sand.cpp
 )

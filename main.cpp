@@ -11,6 +11,7 @@
 #include "polymorph.h"
 #include "smart_ptr.h" 
 #include "io_sand.h"
+#include "lambda_sand.h"
 
 int main()
 {
@@ -67,4 +68,6 @@ int main()
     io_sandbox();
 
     enum_sandbox();
+
+    lambda_sand();
 }

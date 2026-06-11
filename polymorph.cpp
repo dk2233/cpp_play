@@ -1,12 +1,16 @@
 #include "BankAccount.h"
 #include "Account_Util.h"
+#include <ios>
 #include <memory>
 #include <vector>
 #include <iostream>
 #include "Shapes.h"
+#include "utils.h"
 
 void account_train(void)
 {
+
+    marker_begin(" Class accout TEST ");
     BankAccount *p = new TrustAccount("pointer type", 20000, 3.0);
 
     p->withdraw(100.0);
@@ -69,11 +73,13 @@ void account_train(void)
         delete p;
     }
 
+    marker_begin(" Class accout END ");
 }
 
 void shapes_test()
 {
-    Shapes * s1 = new Square(2.0);
+    marker_begin(" Class shapes TEST ");
+    Shape * s1 = new Square(2.0);
 
     std::cout << *s1 << std::endl;
 
@@ -85,7 +91,7 @@ void shapes_test()
     delete s1;
 
     //using unique_ptr with new keyword
-    std::unique_ptr<Shapes> s3 {new Square(3.5)};
+    std::unique_ptr<Shape> s3 {new Square(3.5)};
     std::cout << "smart pointer in " << s3 << " points to " << s3.get() << ", " << *s3 <<std::endl;
     std::cout << *s3 << std::endl;
     s3.reset();
@@ -94,11 +100,11 @@ void shapes_test()
     std::cout << *s3 << std::endl;
     
     //using unique_ptr with new keyword 
-    std::unique_ptr<Shapes> s4 = std::make_unique<Rectangle>(Rectangle(2.0, 7.8));
+    std::unique_ptr<Shape> s4 = std::make_unique<Rectangle>(Rectangle(2.0, 7.8));
 
     std::cout << *s4 ;
 
-    std::vector<std::unique_ptr<Shapes>> ptr = {};
+    std::vector<std::unique_ptr<Shape>> ptr = {};
     //cannot call function with unique_ptr
     //but we can move ownership
     ptr.push_back(std::move(s4));
@@ -106,8 +112,34 @@ void shapes_test()
     std::cout << *(ptr.at(0));
     std::cout << ptr.at(0)->calc_area() << std::endl ;
 
-    std::shared_ptr<Shapes> s2 = std::make_shared<Rhombus>(3.4);
+    std::shared_ptr<Shape> s2 = std::make_shared<Rhombus>(3.4);
 
     std::cout << *s2 ;
 
+    ptr.push_back(std::make_unique<Square>(Square(3.5)));
+    ptr.push_back(std::make_unique<Rhombus>(Rhombus(3.5, 4.5)));
+
+    display_shape_vec(ptr);
+
+    std::cout << " Sorting .... " << std::endl;
+
+    std::sort(ptr.begin(), ptr.end(), [](const std::unique_ptr<Shape> &p1, const std::unique_ptr<Shape> &p2) {
+            return p1->calc_area() < p2->calc_area(); });
+
+
+    display_shape_vec(ptr);
+    
+    std::boolalpha;
+
+    /*this wont work - it is because under the hood 
+    * it will compare squar< rectangle - and this will not be clear
+    * dynamic_cast will not know how to cast rectangle to Square
+    *
+    * (ptr.at(0)) < *(ptr.at(1));
+    *
+    * here is nice lesson - do not use operator overloading in case of class hierarchy
+    * also DRY is broken
+    */
+    marker_begin(" Class shapes END ");
 }
+

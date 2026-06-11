@@ -6,6 +6,7 @@
 #include <type_traits>
 #include <map>
 #include <set>
+#include <iomanip>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ void show_container(const C& container)
 {
     for(auto&  n: container)
     {
-        std::cout << n << ", ";
+        std::cout << std::setprecision(7) << n << ", ";
     }
     std::cout << std::endl;
 }
