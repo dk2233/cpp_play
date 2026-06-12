@@ -1,6 +1,5 @@
 #include "BankAccount.h"
 #include "Account_Util.h"
-#include <ios>
 #include <memory>
 #include <vector>
 #include <iostream>
@@ -129,10 +128,10 @@ void shapes_test()
 
     display_shape_vec(ptr);
     
-    std::boolalpha;
+    //std::boolalpha;
 
     /*this wont work - it is because under the hood 
-    * it will compare squar< rectangle - and this will not be clear
+    * it will compare {square< rectangle} - and this will not be clear
     * dynamic_cast will not know how to cast rectangle to Square
     *
     * (ptr.at(0)) < *(ptr.at(1));
@@ -141,5 +140,28 @@ void shapes_test()
     * also DRY is broken
     */
     marker_begin(" Class shapes END ");
+}
+
+void static_polymorph()
+{
+
+    /* this is not static - it's still using
+     * virtual keyword
+     */
+    Square sq = Square(2.0);
+    Rectangle rec = Rectangle(2.0, 3.0);
+    Rhombus rh = Rhombus(4.5, 6.7);
+
+    Shape * sh_p {&sq};
+
+
+    std::cout << "Square pointer to shape pointer : " << *sh_p ;
+
+    sh_p = &rec; 
+
+    std::cout << "Rectangle pointer to shape pointer : " << *sh_p ;
+
+
+
 }
 

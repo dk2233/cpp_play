@@ -3,24 +3,30 @@
 
 #include "iostream"
 #include <array>
+#include <concepts>
+#include <ostream>
 #include <type_traits>
 #include <map>
 #include <set>
 #include <iomanip>
+#include <ranges>
 
 using namespace std;
 
 std::ostream &operator<<(std::ostream &os, const std::set<int> &s);
 
 template <typename  C>
-void show_container(const C& container);
-
-template <typename  C>
+concept Printable = requires(std::ostream &os,const C &c)
+{
+    {os << c} ->std::same_as<std::ostream&>;
+};
+template <typename C>
+requires Printable<std::ranges::range_value_t<C>> 
 void show_container(const C& container)
 {
-    for(auto&  n: container)
+    for(const auto& element: container)
     {
-        std::cout << std::setprecision(7) << n << ", ";
+        std::cout << std::setprecision(7) << element << ", ";
     }
     std::cout << std::endl;
 }

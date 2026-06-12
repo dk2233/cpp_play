@@ -60,6 +60,83 @@ void lambda_sand()
              });
 
      show_container(deq_doub);
+
+
+     {
+         auto lambda_statefull = [a]() mutable{
+             a +=2;
+             std::cout  << "inside lambda a " << static_cast<char>(a) << std::endl;
+         };
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+     }
+     std::cout << std::endl;
+
+     {
+         auto lambda_statefull = [&a]() mutable{
+             a +=2;
+             std::cout  << "inside lambda a " << static_cast<char>(a) << std::endl;
+         };
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+     }
+     std::cout << std::endl;
+
+     {
+         auto lambda_statefull = [=]() mutable{
+             a +=2;
+             std::cout << "inside lambda a " << static_cast<char>(a) << std::endl;
+         };
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+     }
+     std::cout << std::endl;
+
+     {
+         auto lambda_statefull = [&]() mutable{
+             a +=2;
+             std::cout << "inside lambda a " << static_cast<char>(a) << std::endl;
+         };
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+
+         lambda_statefull();
+
+         std::cout << "Outside lambda " << a << std::endl;
+     }
+     std::cout << std::endl;
     marker_begin("LAMBDA END");
 
 }

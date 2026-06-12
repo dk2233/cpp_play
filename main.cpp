@@ -12,6 +12,7 @@
 #include "smart_ptr.h" 
 #include "io_sand.h"
 #include "lambda_sand.h"
+#include "concepts_play.h"
 
 int main()
 {
@@ -70,4 +71,8 @@ int main()
     enum_sandbox();
 
     lambda_sand();
+
+    static_polymorph();
+
+    concepts_play();
 }

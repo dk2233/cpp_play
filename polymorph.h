@@ -5,4 +5,7 @@
 void account_train(void);
 
 void shapes_test();
+
+void static_polymorph();
+
 #endif
