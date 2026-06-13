@@ -138,6 +138,10 @@ void maps()
 
 void lists()
 {
+    /*
+     * lists does not have random access
+     * lists does not unvalidate iterators when adding\removing new element
+     */
     list<int> list_num = {};
 
     list_num.push_front(8);

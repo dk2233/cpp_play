@@ -1,9 +1,9 @@
 #include "utils.h"
-#include <cstddef>
 #include <ios>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <vector>
 constexpr const char  * const file_name {"../test.txt"};
 int max_score {5};
 constexpr const int total_w  {60};
