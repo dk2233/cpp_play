@@ -5,9 +5,12 @@
  */
 #include "smart_ptr.h"
 #include "utils.h"
+#include <concepts>
 #include <iostream>
 #include <memory>
 #include <ostream>
+#include <utility>
+#include "var_class.h"
 
 std::ostream &operator<<(std::ostream &os, I_AB &ab) 
 {
@@ -30,6 +33,19 @@ void B::print(std::ostream &os)
 
 }
 
+template <typename T>
+concept CheckDisplayOp = requires(std::ostream &os, const T &tt)
+{
+    {os << tt} -> std::same_as<std::ostream &>;
+};
+
+template  <typename Ptr>
+requires CheckDisplayOp<decltype(*std::declval<Ptr>())>
+void func_unique(const Ptr &ptr)
+{
+    std::cout << *ptr << std::endl;
+};
+
 void smart_ptr()
 {
     marker_begin("SMART POINTER BEGIN");
@@ -51,6 +67,16 @@ void smart_ptr()
     std::cout << "usage of a1 " << a1.use_count() << std::endl;
     std::cout << b1.use_count() << std::endl;
 
-    //a1.s
+
+    std::unique_ptr<int> ptr_un = std::make_unique<int>(10);
+
+    //do not have to use std::move - function takes arg as reference
+    func_unique(ptr_un);
+
+    std::unique_ptr<var_class> ptr_var_un = std::make_unique<var_class>(10, 34);
+
+    //this wont compile
+    //func_unique(ptr_var_un);
+
     marker_begin("SMART POINTER END");
 }

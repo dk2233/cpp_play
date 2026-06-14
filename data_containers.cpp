@@ -76,6 +76,10 @@ void vectors()
 
 void maps()
 {
+    /* it is like dictionary
+     *
+     * key and value
+     */ 
     std::map<std::string, int> map_s_i {};
     std::map<std::string, std::set<int>> map_s_sets {};
     std::map<string,string> map_strings = {pair<string,string>("animal","cat")}; 

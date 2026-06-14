@@ -15,6 +15,14 @@ enum Status_unscoped {
     STAT_IDLE, STAT_INIT, STAT_RESTART, STAT_RUN, STAT_ERROR };
 
 
+enum struct Colors_e {
+    YELLOW,
+    GREEN,
+    BLUE,
+    RED,
+    BLACK,
+    WHITE,
+};
 
 void enum_sandbox();
 
