@@ -32,4 +32,5 @@ io_sand.cpp
 enum_train.cpp
 lambda_sand.cpp
 concepts_play.cpp
+ranges_play.cpp
 )

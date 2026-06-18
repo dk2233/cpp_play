@@ -13,6 +13,7 @@
 #include "io_sand.h"
 #include "lambda_sand.h"
 #include "concepts_play.h"
+#include "ranges_play.h"
 
 int main()
 {
@@ -75,4 +76,6 @@ int main()
     static_polymorph();
 
     concepts_play();
+
+    ranges_play();
 }
