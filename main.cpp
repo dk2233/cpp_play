@@ -14,6 +14,7 @@
 #include "lambda_sand.h"
 #include "concepts_play.h"
 #include "ranges_play.h"
+#include "license_key_format.h"
 
 int main()
 {
@@ -78,4 +79,6 @@ int main()
     concepts_play();
 
     ranges_play();
+
+    license_key();
 }

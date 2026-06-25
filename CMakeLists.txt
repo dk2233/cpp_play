@@ -33,4 +33,5 @@ enum_train.cpp
 lambda_sand.cpp
 concepts_play.cpp
 ranges_play.cpp
+license_key_format.cpp
 )
