@@ -71,6 +71,10 @@ void vectors()
 
     show_container(numbers_vec);
 
+    std::cout << "vector tab_5 of 5 elements" << std::endl;
+    std::vector<int> tab_5(5); 
+    show_container(tab_5);
+
 }
 
 
